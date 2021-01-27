@@ -104,6 +104,7 @@
       // Minus button event handler
       const substractNumber = document.getElementById('substractBtn');
       substractNumber.addEventListener('click', function(){
+         if(changingNumber.value > 0){
          const changingText = parseNumber('changingNumber');
          const result = changingText-1;
          document.getElementById('changingNumber').value = result;
@@ -119,9 +120,9 @@
          const changingTotalAmount = parseNumber3('changingTotalAmount');
          const totalAmount = changingTotalAmount - 1219;
          document.getElementById('changingTotalAmount').innerText = totalAmount;
-
-         if(changingNumber.value < 1){
-            alert('Sorry your Quantity cannot be zero and negative. Thank you');
+         }
+         else{
+            alert('Sorry your Quantity cannot be negative. Thank you');
          }
       })
 
@@ -150,6 +151,7 @@
       // Minus button event handler
       const caseSubstractBtn = document.getElementById('caseSubstractBtn');
       caseSubstractBtn.addEventListener('click', function(){
+         if(changingCaseQuantity.value > 0){
          const changingQuantity = parseNumber('changingCaseQuantity');
          const result = changingQuantity-1;
          document.getElementById('changingCaseQuantity').value = result;
@@ -165,10 +167,13 @@
          const changingTotalAmount = parseNumber3('changingTotalAmount');
          const totalAmount = changingTotalAmount - 59;
          document.getElementById('changingTotalAmount').innerText = totalAmount;
-
-         if(changingCaseQuantity.value < 1){
-            alert('Sorry your Quantity cannot be zero and negative. Thank you');
          }
+         else{
+            alert('Sorry your Quantity cannot be negative. Thank you');
+         }
+         // if(changingCaseQuantity.value < 1){
+         //    alert('Sorry your Quantity cannot be zero and negative. Thank you');
+         // }
       })
 
       // function for convert a comma separated string to number
