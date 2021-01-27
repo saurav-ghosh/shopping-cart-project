@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Shopping Cart</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
+   <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+
+   <section>
+      <div class="container">
+         <div class="cart">
+            <div class="col-md-12 col-lg-10 mx-auto">
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item">
+                        <img src="images/product-1.png" alt="">
+                        <h5>iPhone 11 128GB Black</h5>
+                     </div>
+
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button id="substractBtn" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="changingNumber" type="text" class="form-control text-center" value="1">
+                           <button id="addBtn" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <h5>$ <span id="changingPrice">1219</span></h5>
+                        <img src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item mx-auto">
+                        <img src="images/product-2.png" alt="">
+                        <h5>iPhone 11 Silicone Case - Black</h5>
+                     </div>
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button id="caseSubstractBtn" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="changingCaseQuantity" type="text" class="form-control text-center" value="1">
+                           <button id="caseAddBtn" class="btn btn-default"><i class="fas fa-plus"></i></button>
+
+                        </div>
+                        <h5>$ <span id="changingCasePrice">59</span></h5>
+                        <img src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+
+                     <div class="col-md-8">
+                        <h5>Subtotal: </h5>
+                        <h5>Tax:</h5>
+                        <h5>Total:</h5>
+                     </div>
+
+                     <div class="col-md-4 status">
+                        <h5>$ <span id="changingSubTotal">1,278</span></h5>
+                        <h5>$0</h5>
+                        <h5>$ <span id="changingTotalAmount">1,278</span></h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-12 pt-4 pb-4">
+                  <button type="button" class="btn btn-success check-out">Check Out</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <script>
+      // functionality for phone Quantity and price
+
+      // Plus button event handler
+      const addNumber = document.getElementById('addBtn');
+      addNumber.addEventListener('click', function(){
+         const changingText = parseNumber('changingNumber');
+         const result = changingText+1;
+         document.getElementById('changingNumber').value = result;
+
+         const changingCost = parseNumber1('changingPrice');
+         const total = changingCost + 1219;
+         document.getElementById('changingPrice').innerText = total;  
+
+         const changingSubTotalNumber = parseNumber3('changingSubTotal');
+         const subTotal =  changingSubTotalNumber + 1219;
+         document.getElementById('changingSubTotal').innerText = subTotal;
+
+         const changingTotalAmount = parseNumber3('changingTotalAmount');
+         const totalAmount = changingTotalAmount + 1219;
+         document.getElementById('changingTotalAmount').innerText = totalAmount;
+         
+      })
+
+      // Minus button event handler
+      const substractNumber = document.getElementById('substractBtn');
+      substractNumber.addEventListener('click', function(){
+         const changingText = parseNumber('changingNumber');
+         const result = changingText-1;
+         document.getElementById('changingNumber').value = result;
+
+         const changingCost = parseNumber1('changingPrice');
+         const total = changingCost - 1219;
+         document.getElementById('changingPrice').innerText = total;
+         
+         const changingSubTotalNumber = parseNumber3('changingSubTotal');
+         const subTotal = changingSubTotalNumber-1219;
+         document.getElementById('changingSubTotal').innerText = subTotal;
+
+         const changingTotalAmount = parseNumber3('changingTotalAmount');
+         const totalAmount = changingTotalAmount - 1219;
+         document.getElementById('changingTotalAmount').innerText = totalAmount;
+
+         if(changingNumber.value < 1){
+            alert('Sorry your Quantity cannot be zero and negative. Thank you');
+         }
+      })
+
+      //functionality for phone case Quantity and price
+      
+      // Plus button event handler
+      const caseAddBtn = document.getElementById('caseAddBtn');
+      caseAddBtn.addEventListener('click', function(){
+         const changingQuantity = parseNumber('changingCaseQuantity');
+         const result = changingQuantity+1;
+         document.getElementById('changingCaseQuantity').value = result;
+
+         const changingCasePrice = parseNumber1('changingCasePrice');
+         const total = changingCasePrice + 59;
+         document.getElementById('changingCasePrice').innerText = total;
+
+         const changingSubTotalNumber = parseNumber3('changingSubTotal');
+         const subTotal =  changingSubTotalNumber + 59;
+         document.getElementById('changingSubTotal').innerText = subTotal;
+
+         const changingTotalAmount = parseNumber3('changingTotalAmount');
+         const totalAmount = changingTotalAmount + 59;
+         document.getElementById('changingTotalAmount').innerText = totalAmount;
+      })
+
+      // Minus button event handler
+      const caseSubstractBtn = document.getElementById('caseSubstractBtn');
+      caseSubstractBtn.addEventListener('click', function(){
+         const changingQuantity = parseNumber('changingCaseQuantity');
+         const result = changingQuantity-1;
+         document.getElementById('changingCaseQuantity').value = result;
+
+         const changingCasePrice = parseNumber1('changingCasePrice');
+         const total = changingCasePrice - 59;
+         document.getElementById('changingCasePrice').innerText = total;
+
+         const changingSubTotalNumber = parseNumber3('changingSubTotal');
+         const subTotal = changingSubTotalNumber-59;
+         document.getElementById('changingSubTotal').innerText = subTotal;
+
+         const changingTotalAmount = parseNumber3('changingTotalAmount');
+         const totalAmount = changingTotalAmount - 59;
+         document.getElementById('changingTotalAmount').innerText = totalAmount;
+
+         if(changingCaseQuantity.value < 1){
+            alert('Sorry your Quantity cannot be zero and negative. Thank you');
+         }
+      })
+
+      // function for convert a comma separated string to number
+      function parseNumber3(id){
+         const changingSubTotal = document.getElementById(id).innerText;
+         const changingSubTotalString = changingSubTotal.replace(/,/g ,"");
+         const changingSubTotalNumber = parseFloat(changingSubTotalString);
+         return changingSubTotalNumber;
+      }
+
+      // function for convert a string to number for input type
+      function parseNumber(id){
+         const changingNumber = document.getElementById(id).value;
+         const changingText = parseFloat(changingNumber);
+         return changingText;
+      }
+
+      // function for convert a string to number for any text
+      function parseNumber1(id){
+         const changingPrice = document.getElementById(id).innerText;
+         const changingCost = parseFloat(changingPrice);
+         return changingCost;
+      }
+   </script>
+</body>
+</html>
